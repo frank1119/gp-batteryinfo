@@ -120,7 +120,6 @@ ExternalAPI_GPScriptFunctionDefinition functionList[] = {
     {"GetBatteryDischarging", "", "Returns boolean", "Returns true when the battery is discharging", GPGetBatteryDischarging},
     {"GetBatteryPresent", "", "Returns boolean", "Returns true when the battery is present", GPGetBatteryPresent},
     {"GetBatteryLifeTime", "", "Returns integer", "Returns the estimated time left", GPGetBatteryLifeTime},
-
 };
 
 int LibMain::RequestGPScriptFunctionSignatureList(GPScript_AllowedLocations location,
