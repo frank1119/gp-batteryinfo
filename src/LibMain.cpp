@@ -1,10 +1,7 @@
 #include "LibMain.h"
-#include "string"
-// #include <malloc.h>
 
 using GPUtils = gigperformer::sdk::GPUtils;
 using namespace std;
-
 
 
 /// <summary>
@@ -43,8 +40,6 @@ LibMain::~LibMain()
 #pragma region Events and housekeeping
 void LibMain::OnStatusChanged(GPStatusType status)
 {
-    //if (status == GPStatusType::GPStatus_GigStartedLoading)
-    //    x = 1;
 }
 
 void LibMain::Initialization()
@@ -59,8 +54,6 @@ void LibMain::Initialization()
     // Finally, register all the methods that you are going to actually use,
     // i.e, the ones you declared above as override
     registerCallback("OnStatusChanged");
-
-
 }
 
 string LibMain::GetProductDescription()
@@ -76,42 +69,37 @@ string LibMain::GetProductDescription()
 #pragma region Get Values
 extern "C" void GPGetACLineStatus(GPRuntimeEngine *vm)
 {
-
     GP_VM_PushInteger(vm, GetACLineStatus());
 }
 
 extern "C" void GPGetBatteryPercent(GPRuntimeEngine *vm)
 {
-
     GP_VM_PushInteger(vm, GetBatteryPercent());
 }
 
 extern "C" void GPGetBatteryLifeTime(GPRuntimeEngine *vm)
 {
-
     GP_VM_PushInteger(vm, GetBatteryLifeTime());
 }
 
 extern "C" void GPGetBatteryCharging(GPRuntimeEngine *vm)
 {
-
     GP_VM_PushBoolean(vm, GetBatteryCharging() != 0);
 }
 
 extern "C" void GPGetBatteryDischarging(GPRuntimeEngine *vm)
 {
-
     GP_VM_PushBoolean(vm, GetBatteryDischarging()!=0);
 }
+
 extern "C" void GPGetBatteryPresent(GPRuntimeEngine *vm)
 {
-
     GP_VM_PushBoolean(vm, GetBatteryPresent()!=0);
 }
 #pragma endregion
 
 
-// #pragma region Definitions
+#pragma region Definitions
 
 ExternalAPI_GPScriptFunctionDefinition functionList[] = {
     {"GetACLineStatus", "", "Returns integer", "Returns the current linestate", GPGetACLineStatus},
@@ -132,7 +120,7 @@ int LibMain::RequestGPScriptFunctionSignatureList(GPScript_AllowedLocations loca
     return count;
 }
 
-// #pragma endregion
+#pragma endregion
 
 namespace gigperformer
 {

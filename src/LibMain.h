@@ -10,8 +10,12 @@
 // This line is magic!
 using namespace std;
 
+/// <summary>
+/// Global, because one fits all
+/// </summary>
 SYSTEM_BATTERY_STATE sbs;
 SYSTEM_POWER_STATUS sps;
+
 void RefreshState()
 {
     CallNtPowerInformation((POWER_INFORMATION_LEVEL)5, NULL, 0, &sbs, sizeof(sbs));
@@ -19,9 +23,9 @@ void RefreshState()
     GetSystemPowerStatus(&sps);
 }
 
-
 int GetACLineStatus()
 {
+    RefreshState();
     return sps.ACLineStatus;
 }
 
