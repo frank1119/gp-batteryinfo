@@ -1,0 +1,4 @@
+BasedOnStyle: Microsoft
+
+IndentPPDirectives: BeforeHash
+ColumnLimit: 0
