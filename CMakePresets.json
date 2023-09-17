@@ -12,33 +12,6 @@
         "hidden": true,
         "binaryDir": "${sourceDir}/build/${presetName}"
       },
-        {
-            "name": "mac-native",
-            "displayName": "macOS - native",
-            "description": "Build for macOS host architecture",
-            "inherits": [
-                "common"
-            ],
-            "cacheVariables": {
-                "CMAKE_C_FLAGS": "-Wall -Wextra -pedantic",
-                "CMAKE_CXX_FLAGS": "-Wall -Wextra -pedantic",
-                "GIG_PERFORMER_EXTENSIONS_DIRECTORY": "/Users/Shared/Gig Performer/Extensions"
-            },
-            "environment": {
-                "MACOSX_DEPLOYMENT_TARGET": "10.09"
-            }
-        },
-        {
-            "name": "mac-universal",
-            "displayName": "macOS - universal (arm64 + x86_64)",
-            "description": "Build universal binaries for macOS",
-            "inherits": [
-                "mac-native"
-            ],
-            "environment": {
-                "CMAKE_OSX_ARCHITECTURES": "arm64;x86_64"
-            }
-        },
       {
         "name": "windows-native",
         "displayName": "Windows - native",
@@ -55,20 +28,6 @@
       }
     ],
     "buildPresets": [
-        {
-            "name": "mac-native",
-            "displayName": "macOS - native",
-            "description": "Build for macOS host architecture",
-            "configuration": "Release",
-            "configurePreset": "mac-native"
-        },
-        {
-            "name": "mac-universal",
-            "displayName": "macOS - universal (arm64 + x86_64)",
-            "description": "Build universal binaries for macOS",
-            "configuration": "Release",
-            "configurePreset": "mac-universal"
-        },
         {
             "name": "windows-native",
             "displayName": "Windows - native",

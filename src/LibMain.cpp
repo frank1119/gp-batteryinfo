@@ -22,15 +22,13 @@ const string XMLProductDescription =
     // Replace with your information
     "<Library>"
     "  <Product"
-    "    Name=\"BatteryInfo\""
-    "    Version=\"1.0\""
+    "    Name=\"BatteryInfo\"" 
+    "    Version=\"1.0.1\""
     "    BuildDate=\"01/14/2023\">"
     "  </Product> "
     "  <Description>Extension for getting Battery Info. (c) 2023 F. den Blaauwen</Description>"
     "  <ImagePath>/Path/To/ImageFile/foo.jpg</ImagePath>"
     "</Library>";
-
-
 
 LibMain::~LibMain()
 {
@@ -65,8 +63,7 @@ string LibMain::GetProductDescription()
 }
 #pragma endregion
 
-
-#pragma region Get Values
+#pragma region Get Battery/Power values
 extern "C" void GPGetACLineStatus(GPRuntimeEngine *vm)
 {
     GP_VM_PushInteger(vm, GetACLineStatus());
@@ -98,11 +95,10 @@ extern "C" void GPGetBatteryPresent(GPRuntimeEngine *vm)
 }
 #pragma endregion
 
-
 #pragma region Definitions
 
 ExternalAPI_GPScriptFunctionDefinition functionList[] = {
-    {"GetACLineStatus", "", "Returns integer", "Returns the current linestate", GPGetACLineStatus},
+    {"GetACLineStatus", "", "Returns integer", "Returns the current linestate 0 -> Battery, 1 -> AC, 255 -> Unknown", GPGetACLineStatus},
     {"GetBatteryPercent", "", "Returns integer", "Returns the percentage the battery is charged", GPGetBatteryPercent},
     {"GetBatteryCharging", "", "Returns boolean", "Returns true when the battery is charging", GPGetBatteryCharging},
     {"GetBatteryDischarging", "", "Returns boolean", "Returns true when the battery is discharging", GPGetBatteryDischarging},
@@ -110,8 +106,7 @@ ExternalAPI_GPScriptFunctionDefinition functionList[] = {
     {"GetBatteryLifeTime", "", "Returns integer", "Returns the estimated time left", GPGetBatteryLifeTime},
 };
 
-int LibMain::RequestGPScriptFunctionSignatureList(GPScript_AllowedLocations location,
-                                                  ExternalAPI_GPScriptFunctionDefinition **list)
+int LibMain::RequestGPScriptFunctionSignatureList(GPScript_AllowedLocations location, ExternalAPI_GPScriptFunctionDefinition **list)
 {
     Ignore(location);
     // Allow these in ANY script so no need to check the location field
